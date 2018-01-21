@@ -22,7 +22,7 @@
                         {!! Field::text('name', $mesh->name, ['required']) !!}
                         {!! Field::text('life', $mesh->life, ['required']) !!}
                         {!! Field::text('okay', $mesh->okay, ['required']) !!}
-                        {!! Field::select('id_career', $careers, $mesh->career->id, ['required']) !!}
+                        {!! Field::select('id_career', $careers, $mesh->career->id, ['required', 'class' => 'chosen-select']) !!}
                         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
                     </div>
@@ -30,4 +30,12 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        $('.chosen-select').chosen({
+            width: "100%",
+            placeholder_text_single: "Selecciona una carrera"
+        })
+    </script>
 @endsection

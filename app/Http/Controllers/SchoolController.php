@@ -16,7 +16,7 @@ class SchoolController extends Controller
     public function index()
     {
         $schools = School::where('id', '!=', 0)->with('faculty')->get();
-        return view('administracion.schools.index', compact('schools'));
+        return view('admin.schools.index', compact('schools'));
     }
 
     /**
@@ -27,7 +27,7 @@ class SchoolController extends Controller
     public function create()
     {
         $faculties = Faculty::orderBy('name', 'ASC')->pluck('name', 'id')->toArray();
-        return view('administracion.schools.create', compact('faculties'));
+        return view('admin.schools.create', compact('faculties'));
     }
 
     /**
@@ -66,7 +66,7 @@ class SchoolController extends Controller
     public function edit(School $school)
     {
         $faculties = Faculty::all()->pluck('name', 'id')->toArray();
-        return view('administracion.schools.edit', compact(['school', 'faculties']));
+        return view('admin.schools.edit', compact(['school', 'faculties']));
     }
 
     /**

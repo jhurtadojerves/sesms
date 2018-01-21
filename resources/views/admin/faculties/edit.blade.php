@@ -10,7 +10,7 @@
                     <nav class="panel-heading" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('home') }}">Inicio</a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="#">Administración</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.home') }}">Administración</a></li>
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.faculties.index') }}">Facultades</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Editar</li>
                         </ol>
@@ -18,10 +18,10 @@
 
                     <div class="panel-body">
                         {!! Form::open(['method' => 'PUT', 'route' => ['admin.faculties.update', $faculty]]) !!}
-                            {!! Field::text('code', $faculty->code) !!}
-                            {!! Field::text('name', $faculty->name) !!}
-                            {!! Field::date('foundation', $faculty->foundation) !!}
-                            {!! Field::text('acronym', $faculty->acronym) !!}
+                            {!! Field::text('code', $faculty->code, ['required']) !!}
+                            {!! Field::text('name', $faculty->name, ['required']) !!}
+                            {!! Field::date('foundation', $faculty->foundation, ['required']) !!}
+                            {!! Field::text('acronym', $faculty->acronym, ['required']) !!}
                             {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
                             <a href="{{ route('admin.faculties.index') }}" type="button" class="btn btn-danger">Cancelar</a>
                         {!! Form::close() !!}

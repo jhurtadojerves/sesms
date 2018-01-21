@@ -15,7 +15,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = User::whereType('teacher')->get();
-        return view('administracion.teachers.index', compact('teachers'));
+        return view('admin.teachers.index', compact('teachers'));
     }
 
     /**

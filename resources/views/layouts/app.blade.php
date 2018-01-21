@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('plugins/sweetalert/sweetalert.css') }}">
+    <link href="{{ asset('plugins/chosen/chosen.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -80,7 +80,10 @@
     <!-- Scripts -->
 
     <script src="https://use.fontawesome.com/b2aa353d84.js"></script>
-    <script src="{{ asset('plugins/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
+    @yield('js')
+
 </body>
 </html>

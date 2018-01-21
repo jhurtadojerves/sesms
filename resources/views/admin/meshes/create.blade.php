@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Agregar Asignatura a la Malla Curricular $mesh->name")
+@section('title', "Crear Malla Curricular")
 
 @section('content')
     <div class="container">
@@ -17,16 +17,12 @@
                     </nav>
 
                     <div class="panel-body">
-                        {!! Form::open(['method' => 'POST', 'route' => ['admin.meshes.subjects.store', $mesh]]) !!}
+                        {!! Form::open(['method' => 'POST', 'route' => 'admin.meshes.store']) !!}
                             {!! Field::text('code', ['required'])  !!}
                             {!! Field::text('name', ['required']) !!}
-                            {!! Field::number('hp', ['required']) !!}
-                            {!! Field::number('ha', ['required']) !!}
-                            {!! Field::number('ht', ['required']) !!}
-                            {!! Field::number('credits', ['required']) !!}
-                            {!! Field::text('prerequisites') !!}
-                            {!! Field::text('corequisites') !!}
-                            {!! Field::number('level', ['required']) !!}
+                            {!! Field::text('life', ['required']) !!}
+                            {!! Field::text('okay', ['required']) !!}
+                            {!! Field::select('id_career', $careers, ['required', 'class' => 'chosen-select']) !!}
                             {!! Form::submit('Agregar', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
                     </div>
@@ -34,4 +30,13 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        $('.chosen-select').chosen({
+            width: "100%",
+            placeholder_text_single: "Selecciona una carrera"
+        })
+    </script>
 @endsection

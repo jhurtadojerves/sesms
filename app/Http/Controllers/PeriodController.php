@@ -15,7 +15,7 @@ class PeriodController extends Controller
     public function index()
     {
         $periods = Period::orderBy('status')->get();
-        return view('administracion.periods.index', compact('periods'));
+        return view('admin.periods.index', compact('periods'));
     }
 
     /**
@@ -25,7 +25,7 @@ class PeriodController extends Controller
      */
     public function create()
     {
-        return view('administracion.periods.create');
+        return view('admin.periods.create');
     }
 
     /**
@@ -65,7 +65,7 @@ class PeriodController extends Controller
      */
     public function edit(Period $period)
     {
-        return view('administracion.periods.edit', compact('period'));
+        return view('admin.periods.edit', compact('period'));
     }
 
     /**

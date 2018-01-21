@@ -17,7 +17,7 @@ class FacultyController extends Controller
     {
         $faculties = Faculty::all();
 
-        return view('administracion.faculties.index', compact('faculties'));
+        return view('admin.faculties.index', compact('faculties'));
     }
 
     /**
@@ -27,7 +27,7 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        return view('administracion.faculties.create');
+        return view('admin.faculties.create');
     }
 
     /**
@@ -65,7 +65,7 @@ class FacultyController extends Controller
      */
     public function edit(Faculty $faculty)
     {
-        return view('administracion.faculties.edit', compact('faculty'));
+        return view('admin.faculties.edit', compact('faculty'));
     }
 
     /**

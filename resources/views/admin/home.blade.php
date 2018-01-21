@@ -23,13 +23,9 @@
                     <li><a href="{{ route('admin.meshes.index') }}">Mallas Curriculares</a></li>
                 </ul>
 
-                    <ul>
-                        <li><a href="{{ route('admin.teachers.index') }}">Docentes</a></li>
-                    </ul>
-                    
-                <ul>
+                <!--<ul>
                     <li><a href="{{ route('syllable.index') }}">Ver sílabos</a></li>
-                </ul>
+                </ul> -->
 
                 </div>
             </div>

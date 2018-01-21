@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Crear Malla Curricular")
+@section('title', 'Agregar escuela')
 
 @section('content')
     <div class="container">
@@ -11,18 +11,18 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('home') }}">Inicio</a></li>
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.home') }}">Administración</a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.meshes.index') }}">Mallas Curriculares</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.schools.index') }}">Escuelas</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Crear</li>
                         </ol>
                     </nav>
 
                     <div class="panel-body">
-                        {!! Form::open(['method' => 'POST', 'route' => 'admin.meshes.store']) !!}
-                            {!! Field::text('code', ['required'])  !!}
+                        {!! Form::open(['method' => 'POST', 'route' => 'admin.schools.store']) !!}
+                            {!! Field::text('code', ['required']) !!}
                             {!! Field::text('name', ['required']) !!}
-                            {!! Field::text('life', ['required']) !!}
-                            {!! Field::text('okay', ['required']) !!}
-                            {!! Field::select('id_career', $careers, ['required']) !!}
+                            {!! Field::date('foundation', ['required']) !!}
+                            {!! Field::text('acronym', ['required']) !!}
+                            {!! Field::select('id_faculty', $faculties, ['required', 'class' => 'chosen-select']) !!}
                             {!! Form::submit('Agregar', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
                     </div>
@@ -30,4 +30,13 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        $('.chosen-select').chosen({
+            width: "100%",
+            placeholder_text_single: "Selecciona una facultad"
+        })
+    </script>
 @endsection

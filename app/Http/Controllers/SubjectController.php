@@ -26,7 +26,7 @@ class SubjectController extends Controller
 
     public function create(Mesh $mesh)
     {
-        return view('administracion.meshes.subjects.create', compact('mesh'));
+        return view('admin.meshes.subjects.create', compact('mesh'));
     }
 
     public function store(Request $request, Mesh $mesh)
@@ -59,7 +59,7 @@ class SubjectController extends Controller
     {
         $upss = $subject->upss()->with(['user', 'period'])->get();
 
-        return view('administracion.meshes.subjects.show', compact(['mesh', 'subject', 'upss']));
+        return view('admin.meshes.subjects.show', compact(['mesh', 'subject', 'upss']));
     }
 
     /**
@@ -100,7 +100,7 @@ class SubjectController extends Controller
     {
         $periods = Period::whereStatus(true)->pluck('name', 'id')->toArray();
         $teachers = User::whereType('teacher')->pluck('name', 'id')->toArray();
-        return view('administracion.meshes.subjects.teacher', compact(['mesh', 'subject', 'periods', 'teachers']));
+        return view('admin.meshes.subjects.teacher', compact(['mesh', 'subject', 'periods', 'teachers']));
     }
 
     public function teacherStore(Request $request, Mesh $mesh, Subject $subject)

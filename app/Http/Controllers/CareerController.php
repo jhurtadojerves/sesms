@@ -17,7 +17,7 @@ class CareerController extends Controller
     public function index()
     {
         $careers = Career::where('id', '!=', 0)->with('school')->get();
-        return view('administracion.careers.index', compact('careers'));
+        return view('admin.careers.index', compact('careers'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CareerController extends Controller
     public function create()
     {
         $schools = School::orderBy('name', 'ASC')->pluck('name', 'id')->toArray();
-        return view('administracion.careers.create', compact('schools'));
+        return view('admin.careers.create', compact('schools'));
     }
 
     /**
@@ -67,7 +67,7 @@ class CareerController extends Controller
     public function edit(Career $career)
     {
         $schools = School::all()->pluck('name', 'id')->toArray();
-        return view('administracion.careers.edit', compact(['career', 'schools']));
+        return view('admin.careers.edit', compact(['career', 'schools']));
     }
 
     /**

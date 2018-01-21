@@ -17,7 +17,7 @@ class MeshController extends Controller
     public function index()
     {
         $meshes = Mesh::orderBy('id')->get();
-        return view('administracion.meshes.index', compact('meshes'));
+        return view('admin.meshes.index', compact('meshes'));
     }
 
     /**
@@ -28,7 +28,7 @@ class MeshController extends Controller
     public function create()
     {
         $careers = Career::orderBy('name', 'ASC')->pluck('name', 'id')->toArray();
-        return view('administracion.meshes.create', compact('careers'));
+        return view('admin.meshes.create', compact('careers'));
     }
 
     /**
@@ -55,7 +55,7 @@ class MeshController extends Controller
      */
     public function show(Mesh $mesh)
     {
-        return view('administracion.meshes.show', compact('mesh'));
+        return view('admin.meshes.show', compact('mesh'));
     }
 
     /**
@@ -67,7 +67,7 @@ class MeshController extends Controller
     public function edit(Mesh $mesh)
     {
         $careers = Career::orderBy('name', 'ASC')->pluck('name', 'id')->toArray();
-        return view('administracion.meshes.edit', compact(['mesh', 'careers']));
+        return view('admin.meshes.edit', compact(['mesh', 'careers']));
     }
 
     /**

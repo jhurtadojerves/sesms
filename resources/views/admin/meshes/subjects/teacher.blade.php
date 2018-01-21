@@ -19,8 +19,8 @@
 
                     <div class="panel-body">
                         {!! Form::open(['method' => 'POST', 'route' => ['admin.meshes.subjects.teacher.store', $mesh, $subject]]) !!}
-                            {!! Field::select('id_user', $teachers) !!}
-                            {!! Field::select('id_period', $periods) !!}
+                            {!! Field::select('id_user', $teachers, ['class' => 'chosen-select']) !!}
+                            {!! Field::select('id_period', $periods, ['class' => 'chosen-select']) !!}
                             {!! Field::select('parallel',
                                 ['A' => 'A',
                                 'B' => 'B',
@@ -35,7 +35,8 @@
                                 'K' => 'K',
                                 'L' => 'L',
                                 'M' => 'M',
-                                'N' => 'N']
+                                'N' => 'N'],
+                                ['class' => 'chosen-select']
                             ) !!}
                             {!! Form::submit('Agregar', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
@@ -44,4 +45,10 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        $('.chosen-select').chosen({width: "100%"})
+    </script>
 @endsection

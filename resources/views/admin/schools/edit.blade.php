@@ -10,7 +10,7 @@
                     <nav class="panel-heading" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('home') }}">Inicio</a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="#">Administración</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.home') }}">Administración</a></li>
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.schools.index') }}">Escuelas</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Editar</li>
                         </ol>
@@ -22,7 +22,7 @@
                             {!! Field::text('name', $school->name, ['required']) !!}
                             {!! Field::date('foundation', $school->foundation, ['required']) !!}
                             {!! Field::text('acronym', $school->acronym, ['required']) !!}
-                            {!! Field::select('id_faculty', $faculties, $school->faculty->id, ['required']) !!}
+                            {!! Field::select('id_faculty', $faculties, $school->faculty->id, ['required', 'class' => 'chosen-select']) !!}
                             {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
                     </div>
@@ -30,4 +30,12 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        $('.chosen-select').chosen({
+            width: "100%",
+            placeholder_text_single: "Selecciona una facultad"
+        })
+    </script>
 @endsection
