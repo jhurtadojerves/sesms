@@ -21,10 +21,11 @@
                             <tr>
                                 <th scope="col">Cédula</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">email</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Género</th>
                                 <th scope="col">Teléfono</th>
                                 <th scope="col">Número Celular</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                             </thead>
                             <tbody>

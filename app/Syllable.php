@@ -14,11 +14,11 @@ class Syllable extends Model
     ];
 
     public function evaluations() {
-        return $this->hasMany('App\Evaluation');
+        return $this->hasMany('App\Evaluation', 'id_syllable');
     }
 
     public function scenarios() {
-        return $this->hasMany('App\Scenario');
+        return $this->hasMany('App\Scenario', 'id_syllable');
     }
 
     public function units() {
@@ -27,6 +27,10 @@ class Syllable extends Model
 
     public function ups() {
         return $this->belongsTo('App\Ups', 'id_ups');
+    }
+
+    public function bibliographies() {
+        return $this->hasMany('App\Bibliography');
     }
 
 }

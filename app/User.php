@@ -33,7 +33,20 @@ class User extends Authenticatable
     }
 
     public function upss() {
-        return $this->hasMany('App\Ups');
+        return $this->hasMany('App\Ups', 'id_user');
+    }
+
+    public function isAdmin()
+    {
+        return $this->type === 'admin';
+    }
+
+    public function isTeacher() {
+        return $this->type === 'teacher';
+    }
+
+    public function isCoordinator() {
+        return $this->type === 'coordinator';
     }
 
 

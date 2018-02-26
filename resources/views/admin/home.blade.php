@@ -15,17 +15,25 @@
                 </nav>
 
                 <div class="panel-body">
-                <ul>
-                    <li><a href="{{ route('admin.periods.index') }}">Periodo Académico</a></li>
-                    <li><a href="{{ route('admin.faculties.index') }}">Facultades</a></li>
-                    <li><a href="{{ route('admin.schools.index') }}">Escuelas</a></li>
-                    <li><a href="{{ route('admin.careers.index') }}">Carreras</a></li>
-                    <li><a href="{{ route('admin.meshes.index') }}">Mallas Curriculares</a></li>
-                </ul>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-2">
+                            <img src="images/llama.png" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <div class="list-group">
+                                <a href="{{ route('admin.periods.index') }}" class="list-group-item list-group-item-action">Periodo Académico</a>
+                                <a href="{{ route('admin.faculties.index') }}" class="list-group-item list-group-item-action">Facultades</a>
+                                <a href="{{ route('admin.schools.index') }}" class="list-group-item list-group-item-action">Escuelas</a>
+                                <a href="{{ route('admin.careers.index') }}" class="list-group-item list-group-item-action">Carreras</a>
+                                <a href="{{ route('admin.meshes.index') }}" class="list-group-item list-group-item-action">Mallas Curriculares</a>
+                                <a href="{{ route('admin.teachers.index') }}" class="list-group-item list-group-item-action">Docentes</a>
+                            </div>
+                        </div>
 
-                <!--<ul>
-                    <li><a href="{{ route('syllable.index') }}">Ver sílabos</a></li>
-                </ul> -->
+                    </div>
+
 
                 </div>
             </div>

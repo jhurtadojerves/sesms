@@ -13,12 +13,37 @@
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('syllable.index') }}">Sílabos</a></li>
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.meshes.index') }}">Mallas Curriculares</a></li>
                             <li class="breadcrumb-item " aria-current="page"><a href="{{ route('syllable.show', $syllable->id) }}">{{ $syllable->ups->subject->name }}</a></li>
-                            <li class="breadcrumb-item active">Temas</li>
+                            <li class="breadcrumb-item active">{{ $unit->name }}</li>
                         </ol>
                     </nav>
-
                     <div class="panel-body">
-                        <h1>{{ $unit->name }} - Temas</h1>
+                        <table style="width: 30%;">
+                            <tr>
+                                <td><b>Objetivo</b></td>
+                                <td>{{ $unit->objetive }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Logros de Aprendizaje</b></td>
+                                <td>{!! $unit->safeHTML($unit->achievement) !!}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Estrategias Metodológicas</b></td>
+                                <td>{!! $unit->safeHTML($unit->methodological_strategy) !!}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Recursos</b></td>
+                                <td>{!! $unit->safeHTML($unit->resources) !!}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Actividades en clase</b></td>
+                                <td>{!! $unit->safeHTML($unit->classroom_activities) !!}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Autónomas</b></td>
+                                <td>{!! $unit->safeHTML($unit->autonomous_activities) !!}</td>
+                            </tr>
+                        </table>
+                        <h1>Temas</h1>
                         <table class="table table-bordered">
                             <thead>
                             <tr>

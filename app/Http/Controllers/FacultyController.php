@@ -87,12 +87,6 @@ class FacultyController extends Controller
         return redirect(route('admin.faculties.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Faculty  $faculty
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Faculty $faculty)
     {
         $faculty->delete();

@@ -140,7 +140,6 @@ return [
         'day'                   => 'día',
         'hour'                  => 'hora',
         'minute'                => 'minuto',
-        'second'                => 'segundo',
         'title'                 => 'título',
         'content'               => 'contenido',
         'body'                  => 'contenido',
@@ -176,7 +175,13 @@ return [
         'level'                 => 'nivel',
         'id_user'               => 'usuario',
         'id_period'             => 'periodo',
-        'parallel'              => 'paralelo'
+        'parallel'              => 'paralelo',
+        'type'                  => 'tipo',
+        'first'                 => 'Primer Parcial',
+        'second'                => 'Segundo Parcial',
+        'third'                 => 'Tercer Parcial',
+        'principal'              => 'Evaluación Principal',
+        'recovery'              => 'Recuperación',
 
 
     ],

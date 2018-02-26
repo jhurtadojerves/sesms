@@ -11,7 +11,7 @@ class Period extends Model
     ];
 
     public function upss() {
-        return $this->hasMany('App\Ups');
+        return $this->hasMany('App\Ups', 'id_period');
     }
 
 

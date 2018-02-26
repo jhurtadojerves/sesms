@@ -11,7 +11,7 @@ class Evaluation extends Model
     ];
 
     public function syllable() {
-        return $this->belongsTo('App\Syllable');
+        return $this->belongsTo('App\Syllable', 'id_syllable');
     }
 
 }

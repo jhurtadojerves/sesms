@@ -36,7 +36,7 @@
                             <tbody>
                             @foreach($mesh->subjects as $subject)
                                 <tr>
-                                    <th scope="row">{{ $subject->code }}</th>
+                                    <th scope="row"><a href="{{ route('admin.meshes.subjects.show', [$mesh->id, $subject->id]) }}">{{ $subject->code }}</a></th>
                                     <td>{{ $subject->name }}</td>
                                     <td>{{ $subject->hp }}</td>
                                     <td>{{ $subject->ha }}</td>

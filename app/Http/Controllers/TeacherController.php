@@ -25,7 +25,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.teachers.create');
     }
 
     /**
@@ -36,7 +36,11 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User($request->all());
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+
+        return redirect(route('admin.teachers.index'));
     }
 
     /**

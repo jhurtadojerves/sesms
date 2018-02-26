@@ -48,7 +48,7 @@
                             </tbody>
                         </table>
 
-                        <a type="button" class="btn btn-primary" href="{{ route('admin.meshes.subjects.create', $mesh) }}">Agregar</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('admin.meshes.subjects.teacher', [$mesh, $subject]) }}">Agregar</a>
                     </div>
                 </div>
             </div>

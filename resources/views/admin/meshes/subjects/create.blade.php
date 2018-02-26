@@ -24,6 +24,7 @@
                             {!! Field::number('hp', ['required']) !!}
                             {!! Field::number('ha', ['required']) !!}
                             {!! Field::number('ht', ['required']) !!}
+                            {!! Field::text('training_field', ['required']) !!}
                             {!! Field::number('credits', ['required']) !!}
                             {!! Field::text('prerequisites') !!}
                             {!! Field::text('corequisites') !!}

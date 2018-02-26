@@ -42,6 +42,7 @@ class SubjectController extends Controller
         $subject->prerequisites = $request->get('prerequisites');
         $subject->corequisites = $request->get('corequisites');
         $subject->level = $request->get('level');
+        $subject->training_field = $request->get('training_field');
 
         $mesh->subjects()->save($subject);
 
@@ -119,7 +120,7 @@ class SubjectController extends Controller
         $syllable->save();
 
         \Alert::success("El docente se agregó correctamente");
-        return redirect(route('admin.meshes.show', $mesh));
+        return redirect(route('admin.meshes.subjects.show', [$mesh, $subject]));
     }
 
 }

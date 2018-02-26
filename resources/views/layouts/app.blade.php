@@ -13,6 +13,15 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/chosen/chosen.css') }}" rel="stylesheet">
+
+    <style>
+        #app {
+            background-image: url("/images/principal.png") !important;
+            background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
+        }
+    </style>
+
 </head>
 <body>
     <div id="app">
@@ -30,7 +39,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'SES-MS') }}
+                        <b>SES-MS</b>
                     </a>
                 </div>
 
@@ -45,35 +54,25 @@
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                            @if(Auth::user()->type == 'teacher')
+                                <li><a href="{{ route('syllable.index') }}">Ver Sílabos</a></li>
+                            @endif
+                            <li><a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Logout
                                 </a>
 
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ route('admin.home')  }}">Administración</a></li>
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                    
-                                </ul>
-                            </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form></li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-        <div>{!! Alert::render() !!}</div>
+        <div class="container">{!! Alert::render() !!}</div>
         @yield('content')
     </div>
 
@@ -84,6 +83,10 @@
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
     @yield('js')
+    <script>
+        let app = document.getElementById('app')
+        app.style.minHeight = (window.innerHeight -1 ).toString() + "px"
+    </script>
 
 </body>
 </html>
