@@ -57,7 +57,7 @@
                             </tbody>
                         </table>
 
-                        <a type="button" class="btn btn-primary" href="{{ route('admin.periods.create') }}">Agregar</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('admin.periods.soap') }}">Obtener Periodo Actual</a><br><br><a type="button" class="btn btn-primary" href="{{ route('admin.periods.create') }}">Agregar</a>
                     </div>
                 </div>
             </div>

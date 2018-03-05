@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Carreras')
+@section('title', 'Staff')
 
 @section('content')
     <div class="container">
@@ -11,7 +11,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('home') }}">Inicio</a></li>
                             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('admin.home') }}">Administración</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Carreras</li>
+                            <li class="breadcrumb-item active" aria-current="page">Staff</li>
                         </ol>
                     </nav>
 
@@ -19,30 +19,27 @@
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th scope="col">Código</th>
+                                <th scope="col">Cédula</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Fundación</th>
-                                <th scope="col">Acrónimo</th>
-                                <th scope="col">Facultad</th>
-                                <th scope="col">Escuela</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Cargo</th>
+                                <th scope="col">Firma</th>
+                                <th scope="col">Cargo en Firma</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($careers as $career)
+                            @foreach($staff_members as $staff_member)
                                 <tr>
-                                    <th scope="row">{{ $career->code }}</th>
-                                    <td>{{ $career->name }}</td>
-                                    <td>{{ $career->foundation }}</td>
-                                    <td>{{ $career->acronym }}</td>
-                                    <td>{{ $career->school->faculty->name }}</td>
-                                    <td>{{ $career->school->name }}</td>
+                                    <th scope="row">{{ $staff_member->user->card }}</th>
+                                    <td>{{ $staff_member->user->name }}</td>
+                                    <td>{{ $staff_member->user->email }}</td>
+                                    <td>{{ $staff_member->position}}</td>
+                                    <td>{{ $staff_member->signature}}</td>
+                                    <td>{{ $staff_member->signature_position}}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('admin.careers.edit', $career) }}" title="Editar">
+                                        <a href="{{ route('admin.staff.edit', $staff_member) }}" title="Editar">
                                             <i class="fa fa-2x fa-pencil-square-o" style="color: green;" aria-hidden="true"></i>
-                                        </a>
-                                        <a class="link-eliminar" href="{{ route('admin.careers.destroy', $career) }}" title="Eliminar" onclick="return confirm('¿Estás seguro de querer eliminar la escuela?')">
-                                            <i class="fa fa-2x fa-trash-o" style="color: red;" aria-hidden="true"></i>
                                         </a>
                                     </td>
                                 </tr>
@@ -50,7 +47,7 @@
                             </tbody>
                         </table>
 
-                        <a type="button" class="btn btn-primary" href="{{ route('admin.careers.soap') }}">Obtener Carreras</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('admin.staff.create') }}">Agregar</a>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Period extends Model
 {
     protected $fillable = [
-        'name', 'star', 'end', 'status'
+        'code','name', 'star', 'end', 'status'
     ];
 
     public function upss() {

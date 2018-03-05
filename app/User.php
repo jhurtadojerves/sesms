@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'card', 'phone', 'cell_phone', 'type'
+        'card', 'name', 'email', 'gender', 'type', 'phone', 'cell_phone', 'password', 'signature',
     ];
 
     /**
@@ -34,6 +34,10 @@ class User extends Authenticatable
 
     public function upss() {
         return $this->hasMany('App\Ups', 'id_user');
+    }
+
+    public function staffs() {
+        return $this->hasMany('App\Staff');
     }
 
     public function isAdmin()

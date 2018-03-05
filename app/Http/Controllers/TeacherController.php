@@ -39,50 +39,32 @@ class TeacherController extends Controller
         $user = new User($request->all());
         $user->password = bcrypt($request->get('password'));
         $user->save();
-
+        \Alert::success("El docente $user->name se registró correctamente");
         return redirect(route('admin.teachers.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function show(User $user)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function edit(User $user)
     {
-        //
+        $type_values = [
+            'teacher' => 'Docente',
+            'coordinator' => 'Coordinador Académico',
+            'admin' => 'Administrador'
+        ];
+        return view('admin.teachers.edit', compact(['user', 'type_values']));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, User $user)
     {
-        //
+        $user->update($request->all());
+        \Alert::success("El docente $user->name se actualizó correctamente");
+        return redirect(route('admin.teachers.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(User $user)
     {
         //

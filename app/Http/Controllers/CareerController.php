@@ -16,7 +16,7 @@ class CareerController extends Controller
      */
     public function index()
     {
-        $careers = Career::where('id', '!=', 0)->with('school')->get();
+        $careers = Career::where('id', '!=', 0)->with('school')->get()->sortBy('school.name');
         return view('admin.careers.index', compact('careers'));
     }
 

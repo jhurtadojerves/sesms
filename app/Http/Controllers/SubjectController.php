@@ -117,6 +117,7 @@ class SubjectController extends Controller
         $syllable->id_ups = $ups->id;
         $syllable->sede = "Macas";
         $syllable->delivery = Carbon::now();
+        $syllable->comment = '.';
         $syllable->save();
 
         \Alert::success("El docente se agregó correctamente");

@@ -29,6 +29,8 @@
                                 <a href="{{ route('admin.careers.index') }}" class="list-group-item list-group-item-action">Carreras</a>
                                 <a href="{{ route('admin.meshes.index') }}" class="list-group-item list-group-item-action">Mallas Curriculares</a>
                                 <a href="{{ route('admin.teachers.index') }}" class="list-group-item list-group-item-action">Docentes</a>
+                                <a href="{{ route('admin.staff.index') }}" class="list-group-item list-group-item-action">Administrativos</a>
+
                             </div>
                         </div>
 

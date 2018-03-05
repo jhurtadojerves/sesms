@@ -15,7 +15,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
+        $faculties = Faculty::where('opened', 1)->get();
 
         return view('admin.faculties.index', compact('faculties'));
     }
@@ -89,8 +89,9 @@ class FacultyController extends Controller
 
     public function destroy(Faculty $faculty)
     {
-        $faculty->delete();
-        \Alert::warning('La facultad se eliminó correctamente');
+        $faculty->opened = 0;
+        $faculty->save();
+        \Alert::warning("La facultad $faculty->name se eliminó correctamente");
         return redirect(route('admin.faculties.index'));
     }
 }

@@ -41,9 +41,6 @@
                                         <a href="{{ route('admin.teachers.edit', $teacher) }}" title="Editar">
                                             <i class="fa fa-2x fa-pencil-square-o" style="color: green;" aria-hidden="true"></i>
                                         </a>
-                                        <a class="link-eliminar" href="{{ route('admin.teachers.destroy', $teacher) }}" title="Eliminar" onclick="return confirm('¿Estás seguro de querer eliminar el docente?')">
-                                            <i class="fa fa-2x fa-trash-o" style="color: red;" aria-hidden="true"></i>
-                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

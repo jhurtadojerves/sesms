@@ -15,7 +15,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = School::where('id', '!=', 0)->with('faculty')->get();
+        $schools = School::where('id', '!=', 0)->orderBy('id_faculty')->with('faculty')->get();
         return view('admin.schools.index', compact('schools'));
     }
 

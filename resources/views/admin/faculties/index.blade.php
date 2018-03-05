@@ -37,7 +37,8 @@
                                         <a href="{{ route('admin.faculties.edit', $faculty) }}" title="Editar">
                                             <i class="fa fa-2x fa-pencil-square-o" style="color: green;" aria-hidden="true"></i>
                                         </a>
-                                        <a class="link-eliminar" href="{{ route('admin.faculties.destroy', $faculty) }}" title="Eliminar" onclick="return confirm('¿Estás seguro de querer eliminar el Periodo Académico')">
+
+                                        <a class="link-eliminar" href="{{ route('admin.faculties.destroy', $faculty) }}" title="Eliminar" onclick="return confirm('¿Estás seguro de querer eliminar la facultad?')">
                                             <i class="fa fa-2x fa-trash-o" style="color: red;" aria-hidden="true"></i>
                                         </a>
                                     </td>
@@ -45,8 +46,7 @@
                             @endforeach
                             </tbody>
                         </table>
-
-                        <a type="button" class="btn btn-primary" href="{{ route('admin.faculties.create') }}">Agregar</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('admin.faculties.soap') }}">Obtener Facultades</a>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Staff;
 use App\Syllable;
 use App\Unit;
 use App\Ups;
@@ -44,6 +45,7 @@ class SyllableController extends Controller
             'sede' => $request->get('sede'),
             'delivery' => $request->get('delivery'),
             'id_ups' => $request->get('id_ups'),
+            'comment' => '.',
         ]);
 
         $syllable->save();
@@ -85,6 +87,10 @@ class SyllableController extends Controller
         if($syllable->approved or Auth::user()->type == 'coordinator')
         {
             $syllable->load('ups', 'units', 'ups.subject', 'bibliographies', 'scenarios')->get();
+            $coordinator = Staff::where('position', 'coordinator')->first();
+            $coordinator->load('user');
+            $director = Staff::where('position', 'coordinator')->first();
+            $director->load('user');
             $real = $syllable->scenarios()->where('type', '=', 'REALES')->get();
             $virtual = $syllable->scenarios()->where('type', '=', 'VIRTUALES')->get();
             $aulico = $syllable->scenarios()->where('type', '=', 'AÚLICO')->get();
@@ -98,7 +104,7 @@ class SyllableController extends Controller
             if ((count($aulico) >= count($real)) and count($aulico) >= count($virtual))
                 $size = count($aulico);
 
-            $view =  \View::make('syllable.report.show', compact(['syllable', 'virtual', 'real', 'aulico', 'size']))->render();
+            $view =  \View::make('syllable.report.show', compact(['syllable', 'virtual', 'real', 'aulico', 'size', 'coordinator', 'director']))->render();
             $pdf = \App::make('dompdf.wrapper');
             $pdf->loadHTML($view)->setPaper('a4')->setWarnings(false);
             //return view('syllable.report.show', compact('syllable'));

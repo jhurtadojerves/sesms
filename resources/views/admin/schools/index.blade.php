@@ -48,7 +48,7 @@
                             </tbody>
                         </table>
 
-                        <a type="button" class="btn btn-primary" href="{{ route('admin.schools.create') }}">Agregar</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('admin.schools.soap') }}">Obtener Escuelas</a>
                     </div>
                 </div>
             </div>

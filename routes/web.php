@@ -360,6 +360,11 @@ Route::group(['prefix' => 'administracion', 'middleware' => ['auth', 'admin']], 
             'as' => 'admin.faculties.index'
         ]);
 
+        Route::get('soap', [
+            'uses' => 'SoapController@faculty',
+            'as' => 'admin.faculties.soap'
+        ]);
+
         Route::get('agregar', [
             'uses' => 'FacultyController@create',
             'as' => 'admin.faculties.create'
@@ -397,6 +402,10 @@ Route::group(['prefix' => 'administracion', 'middleware' => ['auth', 'admin']], 
             'uses' => 'SchoolController@index',
             'as' => 'admin.schools.index'
         ]);
+        Route::get('soap', [
+            'uses' => 'SoapController@school',
+            'as' => 'admin.schools.soap'
+        ]);
         Route::get('agregar', [
             'uses' => 'SchoolController@create',
             'as' => 'admin.schools.create'
@@ -430,6 +439,11 @@ Route::group(['prefix' => 'administracion', 'middleware' => ['auth', 'admin']], 
         Route::get('/', [
             'uses' => 'CareerController@index',
             'as' => 'admin.careers.index'
+        ]);
+
+        Route::get('soap', [
+            'uses' => 'SoapController@career',
+            'as' => 'admin.careers.soap'
         ]);
 
         Route::get('agregar', [
@@ -468,6 +482,10 @@ Route::group(['prefix' => 'administracion', 'middleware' => ['auth', 'admin']], 
         Route::get('/', [
             'uses' => 'PeriodController@index',
             'as' => 'admin.periods.index'
+        ]);
+        Route::get('actual', [
+            'uses' => 'SoapController@period',
+            'as' => 'admin.periods.soap'
         ]);
 
         Route::get('agregar', [
@@ -597,7 +615,7 @@ Route::group(['prefix' => 'administracion', 'middleware' => ['auth', 'admin']], 
                 'as' => 'admin.teachers.edit'
             ]);
 
-            Route::put('editar', [
+            Route::POST('editar', [
                 'uses' => 'TeacherController@update',
                 'as' => 'admin.teachers.update'
             ]);
@@ -607,5 +625,34 @@ Route::group(['prefix' => 'administracion', 'middleware' => ['auth', 'admin']], 
                 'as' => 'admin.teachers.destroy'
             ]);
         });
+    });
+
+    /// Staff
+    /// /administracion/staff
+    Route::group(['prefix' => 'staff'], function () {
+        Route::get('/', [
+            'uses' => 'StaffController@index',
+            'as' => 'admin.staff.index'
+        ]);
+
+        Route::get('agregar', [
+            'uses' => 'StaffController@create',
+            'as' => 'admin.staff.create'
+        ]);
+
+        Route::post('agregar', [
+            'uses' => 'StaffController@store',
+            'as' => 'admin.staff.store'
+        ]);
+
+        Route::get('editar/{staff}', [
+            'uses' => 'StaffController@edit',
+            'as' => 'admin.staff.edit'
+        ]);
+
+        Route::post('editar/{staff}', [
+            'uses' => 'StaffController@update',
+            'as' => 'admin.staff.update'
+        ]);
     });
 });

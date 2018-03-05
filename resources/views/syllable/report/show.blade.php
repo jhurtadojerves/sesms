@@ -402,17 +402,18 @@
                     <b>PROFESOR DE LA <br>
                         ASIGNATURA</b>
                 </td>
-                <td>Ing. Ángel Flores Mgs.<br>
-                    <b>COORDINADOR<br>
-                        ACADÉMICO</b></td>
+                <td>
+                    {{ $coordinator->signature }} <br>
+                    <b>{{ $coordinator->signature_position }}</b>
+                </td>
             </tr>
         </table>
         <br><br><br><br>
         <table style="width: 100%; text-align: center;">
             <tr>
                 <td>
-                    Ing. Romané Peñafiel Mgs. <br>
-                    <b>DIRECTORA DE LA <br>EXTENSIÓN</b>
+                    {{ $director->signature }} <br>
+                    <b>{{ $director->signature_position }}</b>
                 </td>
             </tr>
         </table>

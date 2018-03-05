@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterSubjectsTables extends Migration
+class ChangeStaffTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AlterSubjectsTables extends Migration
      */
     public function up()
     {
-        Schema::table('subjects', function (Blueprint $table) {
-            $table->text('training_field')->change()->default("");
+        Schema::table('staff_members', function (Blueprint $table) {
+            $table->text('signature');
+            $table->text('signature_position');
         });
     }
 
@@ -25,6 +26,8 @@ class AlterSubjectsTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('staff_members', function (Blueprint $table) {
+            //
+        });
     }
 }
