@@ -7,9 +7,11 @@ use App\Syllable;
 use App\Unit;
 use App\Ups;
 use App\Period;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use iio\libmergepdf\Merger;
 
 class SyllableController extends Controller
 {
@@ -33,12 +35,6 @@ class SyllableController extends Controller
         return view('syllable.create', compact('upss'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $syllable = new Syllable([
@@ -109,6 +105,61 @@ class SyllableController extends Controller
             $pdf->loadHTML($view)->setPaper('a4')->setWarnings(false);
             //return view('syllable.report.show', compact('syllable'));
             return $pdf->stream('report');
+        }
+        else {
+            \Alert::danger('Para poder imprimir un reporte es necesario que este sea revisado y aprobado por el coordinador académico');
+            return redirect(route('syllable.index'));
+        }
+
+    }
+
+    public function print_merge(Syllable $syllable)
+    {
+        if($syllable->approved or Auth::user()->type == 'coordinator')
+        {
+            $syllable->load('ups', 'units', 'ups.subject', 'bibliographies', 'scenarios')->get();
+            $coordinator = Staff::where('position', 'coordinator')->first();
+            $coordinator->load('user');
+            $director = Staff::where('position', 'coordinator')->first();
+            $director->load('user');
+            $real = $syllable->scenarios()->where('type', '=', 'REALES')->get();
+            $virtual = $syllable->scenarios()->where('type', '=', 'VIRTUALES')->get();
+            $aulico = $syllable->scenarios()->where('type', '=', 'AÚLICO')->get();
+
+            $size = 0;
+
+            if ((count($real) >= count($virtual)) and count($real) >= count($aulico))
+                $size = count($real);
+            if ((count($virtual) >= count($real)) and count($virtual) >= count($aulico))
+                $size = count($virtual);
+            if ((count($aulico) >= count($real)) and count($aulico) >= count($virtual))
+                $size = count($aulico);
+
+            $view_first =  \View::make('syllable.report.first', compact(['syllable', 'virtual', 'real', 'aulico', 'size', 'coordinator', 'director']))->render();
+            $first_pdf = \App::make('dompdf.wrapper');
+            $first_pdf->loadHTML($view_first)->setPaper('a4')->setWarnings(false);
+            //$first_pdf->render();
+
+            $view_second =  \View::make('syllable.report.second', compact(['syllable', 'virtual', 'real', 'aulico', 'size', 'coordinator', 'director']))->render();
+            $second_pdf = \App::make('dompdf.wrapper');
+            $second_pdf->loadHTML($view_second)->setPaper('a4', 'landscape')->setWarnings(false);
+            //$second_pdf->render();
+
+            $view_third =  \View::make('syllable.report.third', compact(['syllable', 'virtual', 'real', 'aulico', 'size', 'coordinator', 'director']))->render();
+            $third_pdf = \App::make('dompdf.wrapper');
+            $third_pdf->loadHTML($view_third)->setPaper('a4')->setWarnings(false);
+            //$third_pdf->render();
+
+            $merger = new Merger;
+            $merger->addRaw($first_pdf->output());
+            $merger->addRaw($second_pdf->output());
+            $merger->addRaw($third_pdf->output());
+            $name = $syllable->ups->subject->name . " " .Carbon::now();
+            $hash_name = hash('md5', $name);
+
+            file_put_contents("$hash_name.pdf", $merger->merge());
+            return response()->file("$hash_name.pdf");
+            //return $first_pdf->stream('report');
         }
         else {
             \Alert::danger('Para poder imprimir un reporte es necesario que este sea revisado y aprobado por el coordinador académico');

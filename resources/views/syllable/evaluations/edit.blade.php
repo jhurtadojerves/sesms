@@ -21,12 +21,11 @@
 
                     <div class="panel-body">
                         {!! Form::open(['method' => 'POST', 'route' => ['syllable.evaluation.update', $syllable, $evaluation]]) !!}
-                        {!! Field::text('activity', $evaluation->activity, ['required']) !!}
-                        {!! Field::number('first', $evaluation->first) !!}
-                        {!! Field::number('second', $evaluation->second) !!}
-                        {!! Field::number('third', $evaluation->third) !!}
-                        {!! Field::number('principal', $evaluation->principal) !!}
-                        {!! Field::number('recovery', $evaluation->recovery) !!}
+                        {!! Field::number('first', $evaluation->first, ['min' => 0]) !!}
+                        {!! Field::number('second', $evaluation->second, ['min' => 0]) !!}
+                        {!! Field::number('third', $evaluation->third, ['min' => 0]) !!}
+                        {!! Field::number('principal', $evaluation->principal, ['min' => 0]) !!}
+                        {!! Field::number('recovery', $evaluation->recovery, ['min' => 0]) !!}
 
                         {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}

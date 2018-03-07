@@ -40,7 +40,7 @@ Route::group(['prefix' => 'silabos', 'middleware' => ['auth', 'teacher']], funct
         ])->where('syllable', '\d+');
 
         Route::get('/imprimir', [
-            'uses' => 'SyllableController@print',
+            'uses' => 'SyllableController@print_merge',
             'as' => 'syllable.print'
         ])->where('syllable', '\d+');
 

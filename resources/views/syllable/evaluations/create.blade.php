@@ -20,12 +20,12 @@
 
                     <div class="panel-body">
                         {!! Form::open(['method' => 'POST', 'route' => ['syllable.evaluation.store', $syllable]]) !!}
-                        {!! Field::text('activity', ['required']) !!}
-                        {!! Field::number('first') !!}
-                        {!! Field::number('second') !!}
-                        {!! Field::number('third') !!}
-                        {!! Field::number('principal') !!}
-                        {!! Field::number('recovery') !!}
+                        {!! Field::select('activity', $activities_names, ['required', 'class' => 'chosen']) !!}
+                        {!! Field::number('first', 0, ['min' => 0]) !!}
+                        {!! Field::number('second', 0, ['min' => 0]) !!}
+                        {!! Field::number('third', 0, ['min' => 0]) !!}
+                        {!! Field::number('principal', 0, ['min' => 0]) !!}
+                        {!! Field::number('recovery', 0, ['min' => 0]) !!}
 
                         {!! Form::submit('Agregar', ['class' => 'btn btn-primary']) !!}
                         {!! Form::close() !!}
@@ -34,4 +34,13 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        $('.chosen').chosen({
+            width: "100%",
+            placeholder_text_single: "Seleccionar una escuela"
+        })
+    </script>
 @endsection
